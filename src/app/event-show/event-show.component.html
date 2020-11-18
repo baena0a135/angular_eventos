@@ -1,0 +1,27 @@
+<nav class="navbar mavbar-light bg-light justify-content-between mt-3">
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class= "nav-link" href="#" (click)="orderDate()">Orden por fecha</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#"(click)="orderPrice()">Orden por Precio</a>
+    </li>
+  </ul>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="text" [(ngModel)]="search" name="filterDes"
+    id="filterDes" placeholder="Filter..." >
+  </form>
+</nav>
+    <event-add (anadir) = "addEvento($event)"></event-add>
+    <div class="card-columns" *ngIf="eventos && eventos.length;else noEventos">
+      <event-item class="card" *ngFor="let event of eventos | eventFilter:search"
+      [eventoHijo] = "event" (eliminar) = "eliminarEvento(event)">
+      </event-item>
+  </div>
+
+
+  <ng-template #noEventos>
+    <h3 class="rojo">No hay eventos disponibles</h3>
+  </ng-template>
+
+
